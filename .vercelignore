@@ -10,8 +10,9 @@ packages/core
 packages/kit-bg
 packages/qr-wallet-sdk
 patches
-development/*
-!development/scripts
+development/lint
+development/module-resolver
+development/webpack
 docs
 .cache
 **/.cache

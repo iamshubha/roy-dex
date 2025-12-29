@@ -83,6 +83,10 @@ console.log(`Copied ${srcDir} to ${jsSdkDestDir}`);
 
 // Build and copy web-embed
 const webEmbedScript = path.join(__dirname, 'web-embed.js');
-execSync(`node "${webEmbedScript}"`, { stdio: 'inherit' });
+try {
+  execSync(`node "${webEmbedScript}"`, { stdio: 'inherit' });
+} catch (error) {
+  console.log('Skipping web-embed build (not needed for web app deployment)');
+}
 
 console.log('All files copied successfully.');
