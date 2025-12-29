@@ -1,5 +1,7 @@
 {
-  "buildCommand": "yarn app:web:build",
+  "buildCommand": "yarn setup:env && yarn app:web:build",
   "outputDirectory": "apps/web/web-build",
-  "installCommand": "yarn install --no-immutable"
+  "installCommand": "yarn install --no-immutable",
+  "framework": null,
+  "devCommand": "yarn app:web"
 }
