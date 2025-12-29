@@ -1,5 +1,5 @@
 {
-  "buildCommand": "yarn workspace @onekeyhq/web build",
+  "buildCommand": "yarn app:web:build",
   "outputDirectory": "apps/web/web-build",
   "installCommand": "yarn install --no-immutable"
 }
