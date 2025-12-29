@@ -1,5 +1,6 @@
 import type { ButtonHTMLAttributes } from 'react';
 import { useMemo } from 'react';
+import { Platform } from 'react-native';
 
 import {
   type ColorTokens,
@@ -15,6 +16,7 @@ import {
 import { Icon } from '../Icon';
 import { SizableText } from '../SizeableText';
 import { Spinner } from '../Spinner';
+import { getGlassStyles, getGlassHoverStyles, getGlassPressStyles } from '../../utils/liquidGlassStyles';
 
 import { useSharedPress } from './useEvent';
 
@@ -113,14 +115,34 @@ export const getSharedButtonStyles = ({
   const { iconColor, color, bg, hoverBg, activeBg, focusRingColor } =
     BUTTON_VARIANTS[variant || 'secondary'];
 
+  // Apply premium liquid glass effect on web for non-link variants
+  const isWebGlassEnabled = Platform.OS === 'web' && variant !== 'link';
+  const glassStyles = isWebGlassEnabled ? getGlassStyles({ blur: 'md', opacity: 0.15 }) : {};
+  
+  // Enhanced glow effects for vibrant hover states
+  const glowColorMap = {
+    primary: '$glowPrimaryStrong',
+    secondary: '$glowPrimary',
+    tertiary: '$glowAccent',
+    destructive: '$glowCriticalStrong',
+  };
+  
+  const glassHoverStyles = isWebGlassEnabled ? getGlassHoverStyles({ 
+    glowColor: glowColorMap[variant || 'secondary'] || focusRingColor,
+    enableGlow: true,
+  }) : {};
+  
+  const glassPressStyles = isWebGlassEnabled ? getGlassPressStyles() : {};
+
   const sharedFrameStyles = {
     bg,
     borderWidth: '$px',
     borderColor: '$transparent',
+    ...glassStyles,
     ...(!disabled && !loading
       ? {
-          hoverStyle: { bg: hoverBg },
-          pressStyle: { bg: activeBg },
+          hoverStyle: { bg: hoverBg, ...glassHoverStyles },
+          pressStyle: { bg: activeBg, ...glassPressStyles },
           focusable: true,
           focusVisibleStyle: {
             outlineColor: focusRingColor,

@@ -3,7 +3,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import { debounce } from 'lodash';
 import { useIntl } from 'react-intl';
-import { type GestureResponderEvent } from 'react-native';
+import { Platform, type GestureResponderEvent } from 'react-native';
 import { useDebouncedCallback } from 'use-debounce';
 
 import { useMedia } from '@onekeyhq/components/src/hooks/useStyle';
@@ -32,6 +32,7 @@ import {
   YStack,
 } from '../../primitives';
 import { useSharedPress } from '../../primitives/Button/useEvent';
+import { getGlassHoverStyles } from '../../utils/liquidGlassStyles';
 import { Popover } from '../Popover';
 import { Shortcut } from '../Shortcut';
 import { Trigger } from '../Trigger';
@@ -121,6 +122,9 @@ export function ActionListItem(
     onPress: handlePress,
   });
 
+  // Apply liquid glass effect on web
+  const glassHoverStyles = Platform.OS === 'web' && !disabled ? getGlassHoverStyles({ enableGlow: false }) : {};
+
   return (
     <ButtonFrame
       justifyContent="flex-start"
@@ -138,7 +142,7 @@ export function ActionListItem(
       disabled={disabled}
       aria-disabled={disabled}
       {...(!disabled && {
-        hoverStyle: { bg: '$bgHover' },
+        hoverStyle: { bg: '$bgHover', ...glassHoverStyles },
         pressStyle: { bg: '$bgActive' },
         // focusable: true,
         // focusVisibleStyle: {

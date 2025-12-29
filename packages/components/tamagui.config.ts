@@ -220,6 +220,47 @@ const { blackA } = primitiveBlackA;
 const { gray, grayA } = primitive;
 const { grayDark, grayDarkA } = primitiveDark;
 
+// Enhanced Liquid Glass Design Tokens - Premium Visual Experience
+const liquidGlassTokens = {
+  // Frosted glass backgrounds with enhanced transparency
+  glassBg: 'rgba(255, 255, 255, 0.08)',
+  glassBgLight: 'rgba(255, 255, 255, 0.12)',
+  glassBgStrong: 'rgba(255, 255, 255, 0.18)',
+  glassBgDark: 'rgba(0, 0, 0, 0.12)',
+  glassBgDarkLight: 'rgba(0, 0, 0, 0.16)',
+  glassBgDarkStrong: 'rgba(0, 0, 0, 0.22)',
+  
+  // Premium gradient overlays
+  glassGradientLight: 'linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.05) 100%)',
+  glassGradientDark: 'linear-gradient(135deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.1) 100%)',
+  glassGradientPrimary: 'linear-gradient(135deg, rgba(0, 122, 255, 0.15) 0%, rgba(88, 86, 214, 0.15) 100%)',
+  glassGradientSuccess: 'linear-gradient(135deg, rgba(52, 199, 89, 0.15) 0%, rgba(0, 199, 190, 0.15) 100%)',
+  
+  // Vibrant glow effects - more intense
+  glowPrimary: 'rgba(0, 122, 255, 0.6)',
+  glowPrimaryStrong: 'rgba(0, 122, 255, 0.8)',
+  glowSuccess: 'rgba(52, 199, 89, 0.6)',
+  glowSuccessStrong: 'rgba(52, 199, 89, 0.8)',
+  glowCritical: 'rgba(255, 59, 48, 0.6)',
+  glowCriticalStrong: 'rgba(255, 59, 48, 0.8)',
+  glowAccent: 'rgba(94, 92, 230, 0.6)',
+  glowAccentStrong: 'rgba(94, 92, 230, 0.85)',
+  glowGold: 'rgba(255, 204, 0, 0.6)',
+  glowPink: 'rgba(255, 45, 85, 0.6)',
+  glowCyan: 'rgba(50, 173, 230, 0.6)',
+  
+  // Shimmer and shine effects
+  shimmerLight: 'rgba(255, 255, 255, 0.4)',
+  shimmerDark: 'rgba(0, 0, 0, 0.3)',
+  
+  // Enhanced blur values for backdrop-filter
+  blurSm: '8px',
+  blurMd: '20px',
+  blurLg: '32px',
+  blurXl: '48px',
+  blurXxl: '64px',
+};
+
 const lightColors = {
   ...brand,
   ...primary,
@@ -234,6 +275,7 @@ const lightColors = {
   ...blue,
   ...orange,
   ...teal,
+  ...liquidGlassTokens,
   bg: '#FFFFFF',
   bgActive: neutral.neutral4,
   bgApp: '#FFFFFF',
@@ -336,6 +378,7 @@ const darkColors: typeof lightColors = {
   ...blueDark,
   ...orangeDark,
   ...tealDark,
+  ...liquidGlassTokens,
   bg: '#1b1b1b',
   bgActive: neutralDark.neutral4,
   bgApp: '#0f0f0f',

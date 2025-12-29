@@ -2,7 +2,7 @@ import type { ComponentType, PropsWithChildren, ReactElement } from 'react';
 import { cloneElement, useCallback, useContext, useState } from 'react';
 
 import { useIntl } from 'react-intl';
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 
 import {
   createStyledContext,
@@ -21,6 +21,7 @@ import {
   YStack,
 } from '../../primitives';
 import { IconButton } from '../IconButton';
+import { getGlassStyles } from '../../utils/liquidGlassStyles';
 
 import type {
   IKeyOfIcons,
@@ -87,6 +88,7 @@ const AlertFrame = styled(XStack, {
   borderRadius: '$3',
   borderWidth: StyleSheet.hairlineWidth,
   borderCurve: 'continuous',
+  ...(Platform.OS === 'web' ? getGlassStyles({ blur: 'md', opacity: 0.14 }) : {}),
   variants: {
     type: {
       info: {

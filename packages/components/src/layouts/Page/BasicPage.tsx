@@ -1,7 +1,7 @@
 import { useLayoutEffect, useMemo, useState } from 'react';
 
 import { useHeaderHeight } from '@react-navigation/elements';
-import { useWindowDimensions } from 'react-native';
+import { Platform, useWindowDimensions } from 'react-native';
 
 import { useMedia } from '@onekeyhq/components/src/hooks/useStyle';
 import platformEnv from '@onekeyhq/shared/src/platformEnv';
@@ -13,6 +13,7 @@ import {
   DESKTOP_MODE_UI_PAGE_BORDER_WIDTH,
   DESKTOP_MODE_UI_PAGE_MARGIN,
 } from '../../utils';
+import { getGlassStyles } from '../../utils/liquidGlassStyles';
 
 import type { IBasicPageProps } from './type';
 
@@ -49,6 +50,11 @@ export function BasicPage({ children }: IBasicPageProps) {
     setIsLayoutMount(true);
   }, []);
   const desktopProps = useMemo(() => {
+    // Apply premium liquid glass effect on desktop layout for web with dramatic blur
+    const glassStyles = Platform.OS === 'web' && isDesktopLayout && !platformEnv.isWebDappMode 
+      ? getGlassStyles({ blur: 'xl', opacity: 0.08 })
+      : {};
+      
     return isDesktopLayout && !platformEnv.isWebDappMode
       ? {
           borderTopLeftRadius: '$4' as const,
@@ -58,6 +64,7 @@ export function BasicPage({ children }: IBasicPageProps) {
           mb: DESKTOP_MODE_UI_PAGE_MARGIN,
           borderColor: '$neutral3',
           overflow: 'hidden' as const,
+          ...glassStyles,
         }
       : undefined;
   }, [isDesktopLayout]);

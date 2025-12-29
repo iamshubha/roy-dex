@@ -6,3 +6,4 @@ export * from './SegmentSlider';
 export * from './Stepper';
 export * from './Table';
 export * from './Tabs';
+export * from './PremiumGlassCard';

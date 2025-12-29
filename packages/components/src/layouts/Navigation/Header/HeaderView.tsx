@@ -4,6 +4,7 @@ import * as React from 'react';
 
 import { Header } from '@react-navigation/elements';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
+import { Platform } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useDebouncedCallback } from 'use-debounce';
 
@@ -14,6 +15,7 @@ import platformEnv from '@onekeyhq/shared/src/platformEnv';
 import { useIsOverlayPage } from '../../../hocs';
 import { useIsDesktopModeUIInTabPages } from '../../../hooks';
 import { Stack, XStack } from '../../../primitives';
+import { getGlassStyles } from '../../../utils/liquidGlassStyles';
 import { DesktopDragZoneBox } from '../../DesktopDragZoneBox';
 import { rootNavigationRef } from '../Navigator/NavigationContainer';
 
@@ -182,6 +184,14 @@ function HeaderView({
     return isDesktopModeUI ? '$bgSubdued' : '$bgApp';
   }, [headerTransparent, isDesktopModeUI]);
 
+  // Apply premium liquid glass effect to header on web with enhanced blur
+  const headerGlassStyles = useMemo(() => {
+    if (Platform.OS !== 'web' || headerTransparent) {
+      return {};
+    }
+    return getGlassStyles({ blur: 'lg', opacity: 0.12 });
+  }, [headerTransparent]);
+
   if (!headerShown) {
     return null;
   }
@@ -198,6 +208,7 @@ function HeaderView({
             : {}
         }
         pointerEvents="box-none"
+        {...headerGlassStyles}
         {...(!isModelScreen && {
           $gtMd: platformEnv.isNativeAndroid
             ? undefined

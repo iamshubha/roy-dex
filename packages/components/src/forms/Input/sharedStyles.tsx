@@ -1,4 +1,7 @@
+import { Platform } from 'react-native';
+
 import { getTokenValue } from '@onekeyhq/components/src/shared/tamagui';
+import { getGlassStyles, getGlassHoverStyles, getGlassFocusStyles } from '../../utils/liquidGlassStyles';
 
 import type { IInputProps } from '.';
 
@@ -43,6 +46,12 @@ export function getSharedInputStyles({
   const { verticalPadding, horizontalPadding } =
     SIZE_MAPPINGS[size || 'medium'];
 
+  // Apply premium liquid glass effect on web
+  const isWebGlassEnabled = Platform.OS === 'web' && !disabled && editable !== false;
+  const glassStyles = isWebGlassEnabled ? getGlassStyles({ blur: 'md', opacity: 0.12 }) : {};
+  const glassHoverStyles = isWebGlassEnabled ? getGlassHoverStyles({ enableGlow: false }) : {};
+  const glassFocusGlow = error ? '$glowCriticalStrong' : '$glowPrimaryStrong';
+
   return {
     borderRadius:
       size === 'large'
@@ -56,12 +65,15 @@ export function getSharedInputStyles({
     placeholderTextColor: '$textPlaceholder',
     borderWidth: '$px',
     cursor: disabled ? 'not-allowed' : 'text',
+    ...glassStyles,
+    hoverStyle: glassHoverStyles,
     focusVisibleStyle: disabled
       ? {}
       : {
           outlineWidth: 2,
           outlineStyle: 'solid',
           outlineColor: error ? '$focusRingCritical' : '$focusRing',
+          ...(isWebGlassEnabled ? getGlassFocusStyles(glassFocusGlow) : {}),
         },
   };
 }
