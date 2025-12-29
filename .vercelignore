@@ -10,7 +10,8 @@ packages/core
 packages/kit-bg
 packages/qr-wallet-sdk
 patches
-development
+development/*
+!development/scripts
 docs
 .cache
 **/.cache
