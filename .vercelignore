@@ -9,7 +9,6 @@ apps/web-embed
 packages/core
 packages/kit-bg
 packages/qr-wallet-sdk
-packages/shared
 patches
 development
 docs
