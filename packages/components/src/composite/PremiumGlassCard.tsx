@@ -2,7 +2,7 @@ import { Platform } from 'react-native';
 
 import { Stack, XStack, YStack } from '../primitives';
 import type { IStackProps } from '../primitives';
-import { 
+import {
   getPremiumGlassStyles,
   getGradientGlassStyles,
 } from '../utils/liquidGlassStyles';

@@ -399,9 +399,9 @@ const showActionList = (
   props: IShowActionListParams,
   contexts:
     | {
-        modalNavigatorContext: ReturnType<typeof useModalNavigatorContext>;
-        pageContextValue?: ReturnType<typeof usePageContext>;
-      }
+      modalNavigatorContext: ReturnType<typeof useModalNavigatorContext>;
+      pageContextValue?: ReturnType<typeof usePageContext>;
+    }
     | undefined,
 ) => {
   const { modalNavigatorContext, pageContextValue } = contexts || {};

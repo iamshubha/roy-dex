@@ -4,11 +4,11 @@
  * Use this as a reference for creating outstanding, eye-catching interfaces
  */
 
-import { 
-  YStack, 
-  XStack, 
-  Heading, 
-  SizableText, 
+import {
+  YStack,
+  XStack,
+  Heading,
+  SizableText,
   Button,
   Stack,
 } from '@onekeyhq/components/src/primitives';
@@ -40,7 +40,7 @@ export function ShowcaseHeroSection() {
           <SizableText size="$bodyLg" textAlign="center" color="$textSubdued">
             Premium liquid glass with shimmer, float, and vibrant glows
           </SizableText>
-          
+
           {/* Glowing CTA Button */}
           <XStack justifyContent="center" mt="$4">
             <GlassGlowEffect glowColor="rgba(0, 122, 255, 0.8)" intense>

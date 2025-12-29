@@ -39,58 +39,58 @@ function getHeaderTitle(
   return typeof options?.headerTitle === 'string'
     ? options?.headerTitle
     : options?.title !== undefined
-    ? options?.title
-    : fallback;
+      ? options?.title
+      : fallback;
 }
 
 const DesktopDragZoneBoxView = platformEnv.isDesktop
   ? ({ disabled, children }: IDesktopDragZoneBoxProps) => {
-      const isModalPage = useIsOverlayPage();
+    const isModalPage = useIsOverlayPage();
 
-      const [isFocus, setIsFocus] = useState(false);
+    const [isFocus, setIsFocus] = useState(false);
 
-      // eslint-disable-next-line @typescript-eslint/unbound-method
-      const { getState } = useNavigation();
+    // eslint-disable-next-line @typescript-eslint/unbound-method
+    const { getState } = useNavigation();
 
-      const currentRouteName = useMemo(() => {
-        const state = getState?.();
-        return state?.routes?.at(-1)?.name;
-      }, [getState]);
+    const currentRouteName = useMemo(() => {
+      const state = getState?.();
+      return state?.routes?.at(-1)?.name;
+    }, [getState]);
 
-      const handlePageFocus = useDebouncedCallback(() => {
-        setIsFocus(
-          currentRouteName ===
-            rootNavigationRef.current?.getCurrentRoute()?.name,
-        );
-      }, 100);
-
-      const handlePageBlur = useDebouncedCallback(() => {
-        setIsFocus(false);
-      }, 100);
-
-      const handlePageEffect = useCallback(() => {
-        handlePageFocus();
-        return () => {
-          handlePageBlur();
-        };
-      }, [handlePageBlur, handlePageFocus]);
-
-      useFocusEffect(handlePageEffect);
-
-      return (
-        <DesktopDragZoneBox disabled={disabled || !isFocus || isModalPage}>
-          {children}
-        </DesktopDragZoneBox>
+    const handlePageFocus = useDebouncedCallback(() => {
+      setIsFocus(
+        currentRouteName ===
+        rootNavigationRef.current?.getCurrentRoute()?.name,
       );
-    }
+    }, 100);
+
+    const handlePageBlur = useDebouncedCallback(() => {
+      setIsFocus(false);
+    }, 100);
+
+    const handlePageEffect = useCallback(() => {
+      handlePageFocus();
+      return () => {
+        handlePageBlur();
+      };
+    }, [handlePageBlur, handlePageFocus]);
+
+    useFocusEffect(handlePageEffect);
+
+    return (
+      <DesktopDragZoneBox disabled={disabled || !isFocus || isModalPage}>
+        {children}
+      </DesktopDragZoneBox>
+    );
+  }
   : DesktopDragZoneBox;
 
 const useHeaderHeight = platformEnv.isNativeIOS
   ? () => 52
   : () => {
-      const { top } = useSafeAreaInsets();
-      return useMemo(() => 52 + top, [top]);
-    };
+    const { top } = useSafeAreaInsets();
+    return useMemo(() => 52 + top, [top]);
+  };
 
 function HeaderView({
   back: headerBack,
@@ -213,8 +213,8 @@ function HeaderView({
           $gtMd: platformEnv.isNativeAndroid
             ? undefined
             : {
-                flexDirection: 'row',
-              },
+              flexDirection: 'row',
+            },
         })}
       >
         <Stack
@@ -224,8 +224,8 @@ function HeaderView({
             platformEnv.isNativeAndroid
               ? undefined
               : {
-                  flex: 1,
-                }
+                flex: 1,
+              }
           }
         >
           <Header
@@ -240,15 +240,15 @@ function HeaderView({
             headerRight={
               typeof headerRight === 'function'
                 ? ({ tintColor }) => {
-                    const ele = headerRight({ tintColor, canGoBack });
-                    return ele;
-                  }
+                  const ele = headerRight({ tintColor, canGoBack });
+                  return ele;
+                }
                 : (headerRight as any)
             }
             headerTitle={
               typeof headerTitle === 'function'
                 ? ({ children, tintColor }) =>
-                    headerTitle({ children, tintColor })
+                  headerTitle({ children, tintColor })
                 : headerTitle
             }
             headerTitleAlign={headerTitleAlign}

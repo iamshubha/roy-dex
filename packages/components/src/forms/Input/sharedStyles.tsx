@@ -70,10 +70,10 @@ export function getSharedInputStyles({
     focusVisibleStyle: disabled
       ? {}
       : {
-          outlineWidth: 2,
-          outlineStyle: 'solid',
-          outlineColor: error ? '$focusRingCritical' : '$focusRing',
-          ...(isWebGlassEnabled ? getGlassFocusStyles(glassFocusGlow) : {}),
-        },
+        outlineWidth: 2,
+        outlineStyle: 'solid',
+        outlineColor: error ? '$focusRingCritical' : '$focusRing',
+        ...(isWebGlassEnabled ? getGlassFocusStyles(glassFocusGlow) : {}),
+      },
   };
 }

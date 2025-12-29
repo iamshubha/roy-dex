@@ -159,7 +159,7 @@ export function GlassFocusAnimation({ children, ...props }: Omit<ILiquidGlassAni
  * Shimmer effect animation for premium visual appeal
  * Creates a moving shine across the element
  */
-export function GlassShimmerEffect({ 
+export function GlassShimmerEffect({
   children,
   duration = 3000,
 }: {
@@ -226,8 +226,8 @@ export function GlassPulseEffect({ children }: { children: ReactNode }) {
  * Enhanced glow effect animation with pulsing intensity
  * Animates box-shadow for vibrant, eye-catching interactions
  */
-export function GlassGlowEffect({ 
-  children, 
+export function GlassGlowEffect({
+  children,
   glowColor = 'rgba(0, 122, 255, 0.6)',
   intense = false,
 }: {

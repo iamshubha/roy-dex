@@ -211,12 +211,12 @@ export const Alert: ComponentType<IAlertProps> = AlertFrame.styleable<
         ) : null}
         {renderTitle
           ? renderTitle({
-              size: '$bodyMdMedium',
-              color: isDanger ? dangerTextColor : undefined,
-              ...(titleNumberOfLines
-                ? { numberOfLines: titleNumberOfLines }
-                : {}),
-            })
+            size: '$bodyMdMedium',
+            color: isDanger ? dangerTextColor : undefined,
+            ...(titleNumberOfLines
+              ? { numberOfLines: titleNumberOfLines }
+              : {}),
+          })
           : null}
         {description ? (
           <SizableText

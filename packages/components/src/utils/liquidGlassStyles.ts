@@ -37,11 +37,7 @@ const blurValues = {
 export function getGlassStyles(
   options: LiquidGlassStyleOptions = {},
 ): StackProps {
-  const {
-    blur = 'md',
-    opacity = 0.12,
-    borderWidth = 1,
-  } = options;
+  const { blur = 'md', opacity = 0.12, borderWidth = 1 } = options;
 
   if (Platform.OS !== 'web') {
     return {};
@@ -106,7 +102,9 @@ export function getGlassPressStyles(
 /**
  * Returns focus ring glass effect styles
  */
-export function getGlassFocusStyles(glowColor: ColorTokens = '$glowPrimary'): StackProps {
+export function getGlassFocusStyles(
+  glowColor: ColorTokens = '$glowPrimary',
+): StackProps {
   if (Platform.OS !== 'web') {
     return {};
   }
@@ -148,7 +146,8 @@ export function getPremiumGlassStyles(): StackProps {
     borderWidth: 1,
     borderColor: 'rgba(255, 255, 255, 0.3)',
     // @ts-expect-error - web-only CSS property
-    boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.2), inset 0 1px 0 0 rgba(255, 255, 255, 0.5)',
+    boxShadow:
+      '0 8px 32px 0 rgba(31, 38, 135, 0.2), inset 0 1px 0 0 rgba(255, 255, 255, 0.5)',
   } as StackProps;
 }
 
@@ -172,13 +171,17 @@ export function getFrostedGlassStyles(): StackProps {
 /**
  * Gradient glass overlay for premium visual hierarchy
  */
-export function getGradientGlassStyles(direction: 'top' | 'bottom' | 'diagonal' = 'diagonal'): StackProps {
+export function getGradientGlassStyles(
+  direction: 'top' | 'bottom' | 'diagonal' = 'diagonal',
+): StackProps {
   if (Platform.OS !== 'web') return {};
 
   const gradients = {
     top: 'linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.05) 100%)',
-    bottom: 'linear-gradient(0deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.05) 100%)',
-    diagonal: 'linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.05) 100%)',
+    bottom:
+      'linear-gradient(0deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.05) 100%)',
+    diagonal:
+      'linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.05) 100%)',
   };
 
   return {
@@ -196,9 +199,9 @@ export function getGradientGlassStyles(direction: 'top' | 'bottom' | 'diagonal' 
  */
 export function shouldReduceMotion(): boolean {
   if (Platform.OS !== 'web') return false;
-  
+
   if (typeof window === 'undefined') return false;
-  
+
   return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 }
 

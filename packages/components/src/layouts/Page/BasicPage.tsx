@@ -33,9 +33,8 @@ const useHeightStyle = () => {
     };
   }
   return {
-    height: `calc(100vh - ${
-      DESKTOP_MODE_UI_PAGE_MARGIN + DESKTOP_MODE_UI_HEADER_HEIGHT
-    }px)`,
+    height: `calc(100vh - ${DESKTOP_MODE_UI_PAGE_MARGIN + DESKTOP_MODE_UI_HEADER_HEIGHT
+      }px)`,
   };
 };
 
@@ -51,21 +50,21 @@ export function BasicPage({ children }: IBasicPageProps) {
   }, []);
   const desktopProps = useMemo(() => {
     // Apply premium liquid glass effect on desktop layout for web with dramatic blur
-    const glassStyles = Platform.OS === 'web' && isDesktopLayout && !platformEnv.isWebDappMode 
+    const glassStyles = Platform.OS === 'web' && isDesktopLayout && !platformEnv.isWebDappMode
       ? getGlassStyles({ blur: 'xl', opacity: 0.08 })
       : {};
-      
+
     return isDesktopLayout && !platformEnv.isWebDappMode
       ? {
-          borderTopLeftRadius: '$4' as const,
-          borderTopRightRadius: '$4' as const,
-          borderWidth: DESKTOP_MODE_UI_PAGE_BORDER_WIDTH,
-          mr: DESKTOP_MODE_UI_PAGE_MARGIN,
-          mb: DESKTOP_MODE_UI_PAGE_MARGIN,
-          borderColor: '$neutral3',
-          overflow: 'hidden' as const,
-          ...glassStyles,
-        }
+        borderTopLeftRadius: '$4' as const,
+        borderTopRightRadius: '$4' as const,
+        borderWidth: DESKTOP_MODE_UI_PAGE_BORDER_WIDTH,
+        mr: DESKTOP_MODE_UI_PAGE_MARGIN,
+        mb: DESKTOP_MODE_UI_PAGE_MARGIN,
+        borderColor: '$neutral3',
+        overflow: 'hidden' as const,
+        ...glassStyles,
+      }
       : undefined;
   }, [isDesktopLayout]);
   return isLayoutMount ? (

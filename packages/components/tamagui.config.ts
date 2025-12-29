@@ -229,13 +229,17 @@ const liquidGlassTokens = {
   glassBgDark: 'rgba(0, 0, 0, 0.12)',
   glassBgDarkLight: 'rgba(0, 0, 0, 0.16)',
   glassBgDarkStrong: 'rgba(0, 0, 0, 0.22)',
-  
+
   // Premium gradient overlays
-  glassGradientLight: 'linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.05) 100%)',
-  glassGradientDark: 'linear-gradient(135deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.1) 100%)',
-  glassGradientPrimary: 'linear-gradient(135deg, rgba(0, 122, 255, 0.15) 0%, rgba(88, 86, 214, 0.15) 100%)',
-  glassGradientSuccess: 'linear-gradient(135deg, rgba(52, 199, 89, 0.15) 0%, rgba(0, 199, 190, 0.15) 100%)',
-  
+  glassGradientLight:
+    'linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.05) 100%)',
+  glassGradientDark:
+    'linear-gradient(135deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.1) 100%)',
+  glassGradientPrimary:
+    'linear-gradient(135deg, rgba(0, 122, 255, 0.15) 0%, rgba(88, 86, 214, 0.15) 100%)',
+  glassGradientSuccess:
+    'linear-gradient(135deg, rgba(52, 199, 89, 0.15) 0%, rgba(0, 199, 190, 0.15) 100%)',
+
   // Vibrant glow effects - more intense
   glowPrimary: 'rgba(0, 122, 255, 0.6)',
   glowPrimaryStrong: 'rgba(0, 122, 255, 0.8)',
@@ -248,11 +252,11 @@ const liquidGlassTokens = {
   glowGold: 'rgba(255, 204, 0, 0.6)',
   glowPink: 'rgba(255, 45, 85, 0.6)',
   glowCyan: 'rgba(50, 173, 230, 0.6)',
-  
+
   // Shimmer and shine effects
   shimmerLight: 'rgba(255, 255, 255, 0.4)',
   shimmerDark: 'rgba(0, 0, 0, 0.3)',
-  
+
   // Enhanced blur values for backdrop-filter
   blurSm: '8px',
   blurMd: '20px',

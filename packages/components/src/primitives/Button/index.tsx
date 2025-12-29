@@ -118,7 +118,7 @@ export const getSharedButtonStyles = ({
   // Apply premium liquid glass effect on web for non-link variants
   const isWebGlassEnabled = Platform.OS === 'web' && variant !== 'link';
   const glassStyles = isWebGlassEnabled ? getGlassStyles({ blur: 'md', opacity: 0.15 }) : {};
-  
+
   // Enhanced glow effects for vibrant hover states
   const glowColorMap = {
     primary: '$glowPrimaryStrong',
@@ -126,12 +126,12 @@ export const getSharedButtonStyles = ({
     tertiary: '$glowAccent',
     destructive: '$glowCriticalStrong',
   };
-  
-  const glassHoverStyles = isWebGlassEnabled ? getGlassHoverStyles({ 
+
+  const glassHoverStyles = isWebGlassEnabled ? getGlassHoverStyles({
     glowColor: glowColorMap[variant || 'secondary'] || focusRingColor,
     enableGlow: true,
   }) : {};
-  
+
   const glassPressStyles = isWebGlassEnabled ? getGlassPressStyles() : {};
 
   const sharedFrameStyles = {
@@ -141,18 +141,18 @@ export const getSharedButtonStyles = ({
     ...glassStyles,
     ...(!disabled && !loading
       ? {
-          hoverStyle: { bg: hoverBg, ...glassHoverStyles },
-          pressStyle: { bg: activeBg, ...glassPressStyles },
-          focusable: true,
-          focusVisibleStyle: {
-            outlineColor: focusRingColor,
-            outlineStyle: 'solid',
-            outlineWidth: 2,
-          },
-        }
+        hoverStyle: { bg: hoverBg, ...glassHoverStyles },
+        pressStyle: { bg: activeBg, ...glassPressStyles },
+        focusable: true,
+        focusVisibleStyle: {
+          outlineColor: focusRingColor,
+          outlineStyle: 'solid',
+          outlineWidth: 2,
+        },
+      }
       : {
-          opacity: 0.5,
-        }),
+        opacity: 0.5,
+      }),
   };
 
   return {
